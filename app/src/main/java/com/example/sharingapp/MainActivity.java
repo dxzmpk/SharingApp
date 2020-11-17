@@ -1,5 +1,6 @@
 package com.example.sharingapp;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -48,16 +49,15 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.contacts:
-                Intent intent = new Intent(this, ContactsActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.contacts) {
+            Intent intent = new Intent(this, ContactsActivity.class);
+            startActivity(intent);
+            return true;
         }
+        return super.onOptionsItemSelected(item);
 
     }
 }
